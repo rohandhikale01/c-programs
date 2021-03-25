@@ -9,7 +9,7 @@ main()
     q=p/2;
     r=p-2*q;
     if(r==0)
-        printf("Number is ");
+        printf("Number is  Even");
     else
         printf("Number is odd");
 }
