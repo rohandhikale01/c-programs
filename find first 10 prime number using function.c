@@ -4,9 +4,11 @@
 int isPrime();
 main()
 {
-    int a,b,x=0,ans,j;
-    printf("Program to print first 10 prime numbers using function\n");
-    for(j=2;x<=10;j++)
+    int a,b,x=0,ans,j,n;
+    printf("Program to print first n prime numbers using function\n");
+    printf("How many prime numbers do you want to find.:   \n");
+    scanf("%d",&n);
+    for(j=2;x<=n;j++)
     {ans=isPrime(j);
     if(ans==1)
     {
