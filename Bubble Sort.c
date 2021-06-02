@@ -1,52 +1,84 @@
 #include<stdio.h>
 #include<conio.h>
+int count=0,swap=0;
 
 main()
 {
-    printf("Program to perform Selection Sort\n");
+    printf("Program to perform BUBLLE Sorting \n");
 
-    int size,i,j,min,temp,x=0,position,k=0;
+    int size,i,j,temp,k;
 
-    printf("How many elements in your array- ");
-    scanf("%d",&size); // Takes The size of array as input //
+    printf("Enter the size of your array- "); //scanning the size of array //
+    scanf("%d",&size);
 
     int a[size];
 
-    printf("\nStart Entering The Elements-");
+    printf("\nStart Entering the elements- ");
 
-    //scans the elements of array //
-    for(i=0;i<size;i++)
+    count=count+6;
+    for(i=0;i<size;i++)  //accepting the elements of array //
     {
         scanf("%d",&a[i]);
+        count=count+2;
     }
+    count++;
+
+    printf("\nEnter 1 to print elements in Ascending order-  ");
+    printf("\nEnter 2 to print elements in Descending order-  \n");
+    scanf("%d",&k);
+
+    count=count+3;
+
+    switch(k)
+    {
+    case 1: for(j=0;j<(size-1);j++)
+            {
+              count++;
+              for(i=0;i<(size-1-j);i++)
+              {
+                count++;
+                if(a[i]>a[i+1]) //swapping of elements //
+               {
+                temp=a[i];
+                a[i]=a[i+1];
+                a[i+1]=temp;
+                swap++;
+                count=count+4;
+               }
+              }
+             }
+              printf("Elements in Descending order- \n");
+              count++;
+        break;
+    case 2:for(j=0;j<(size-1);j++)
+            {
+              count++;
+              for(i=0;i<(size-1-j);i++)
+              {
+                count++;
+                if(a[i]<a[i+1]) //swapping of elements //
+               {
+                temp=a[i];
+                a[i]=a[i+1];
+                a[i+1]=temp;
+                swap++;
+                count=count+4;
+               }
+              }
+             }
+             printf("Elements in Descending order- \n");
+             count++;
+        break;
+    default:
+        printf("Enter the valid number.");
+    }
+    count++;
 
     for(i=0;i<size;i++)
     {
-        min=a[i]; //consider i th element as minimum //
-
-    for(j=k;j<size;j++)
-    {
-        if(a[j]<=min)
-        {
-            min=a[j]; //find i th original min element //
-            position=j;  //stores the position min of elements //
-        }
-    }
-        temp=min; // temp is used to store min element //
-        a[position]=a[i]; //replace the i th element with the position of minimum element //
-        a[i]=min; //minimum element is store at i th position /
-        k++; // To start sorting after k th element //
+        printf("\t%d",a[i]);
+        count=count+2;
     }
 
-    printf("Elements of array in Ascending Sorted list- \n");
-
-    // To print the sorted array //
-    for(i=0;i<size;i++)
-    {
-        printf("%d\t",a[i]);
-    }
-
-    getch();
-    return 0;
-
+   printf("\nStep Count=%d & swap count=%d",count,swap);
 }
