@@ -5,24 +5,13 @@
 
 #define max 30
 
-int top=-1;
-char stk[max],prefix[max],rev[max];
-
-void push(int num)
-{
-    top++;
-    stk[top]=num;
-}
-
-int pop()
-{
-    return stk[top--];
-}
+int Top=-1;
+char stk[max],prefix[max];
 
 void solve(char x)
 {
-   int b=pop();
-   int a=pop();
+   int b=stk[Top--];
+   int a=stk[Top];
    int temp;
 
    switch(x)
@@ -39,7 +28,7 @@ void solve(char x)
        case '/':temp=b/a;
        break;
    }
-   push(temp);
+   stk[Top]=temp;
 }
 
 
@@ -52,8 +41,6 @@ main()
 
     strcpy(prefix,strrev(prefix));
 
-    printf("rev= %s",prefix);
-
     int i=0;
     char x,ch;
 
@@ -63,7 +50,7 @@ main()
     {
         if(isalnum(x))
         {
-            push(x-48);
+             stk[++Top]=(int)(x-48);
         }
         else if(x=='/'||x=='*'||x=='+'||x=='-')
         {
@@ -74,9 +61,7 @@ main()
         x=prefix[i];
     }
 
-    int result=pop();
-
-    printf("\n Ans=%d",result);
+    printf("\n Ans=%d",stk[0]);
 }
 
 
